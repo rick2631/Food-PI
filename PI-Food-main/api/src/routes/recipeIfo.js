@@ -173,39 +173,46 @@ if (name) {
 });
 // Constantes de la API
 
-const idRecipe = async (id) => {    
+
+// Función para obtener los detalles de la receta de la API
+const getRecipeByIdFromApi = async (id) => {
   try {
-    const recipeApi = await axios.get(`${spoonacularURL}/recipes/${id}/information?apiKey=${API_KEY}`);
-    
-    if (recipeApi ) {
-      const dataDB= await recipeApi.data;
+    const response = await axios.get(`${spoonacularURL}/recipes/${id}/information?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+    if (response.status === 200) {
+      const data = response.data;
       const info ={
-          id: dataDB.id,
-          name: dataDB.name,
-          summary: dataDB.summary,
-          score: dataDB.score,
-          healthScore: dataDB.healthScore,
-          image: dataDB.image,
-          steps: dataDB.steps,
-          diets: dataDB.diets?.map(diet => diet.name)
-      }
+        name: data.title, 
+        vegetarian: data.vegetarian,
+        vegan: data.vegan,
+        glutenFree: data.glutenFree,
+        dairyFree: data.dairyFree,
+        image: data.image, 
+        idApi: data.id, 
+        score: data.spoonacularScore, 
+        healthScore: data.healthScore, 
+        diets: data.diets?.map(element => element),types: data.dishTypes?.map(element => element), 
+        summary:data.summary, 
+        steps: data.instructions
+       }
       return info;
     } else {
-      return "no hay  con ese id";
+      return 'Error al obtener detalles de la receta';
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
+   
   }
 };
-//A MI DB
-const idDb = async (id) => {
+
+// Función para obtener los detalles de la receta de la base de datos
+const getRecipeByIdFromDb = async (id) => {
   try {
     return await Recipe.findByPk(id, {
       include: [
         {
           model: Diet,
-          atributes: ["name"],
-          throught: {
+          attributes: ['name'],
+          through: {
             attributes: [],
           },
         },
@@ -213,18 +220,18 @@ const idDb = async (id) => {
     });
   } catch (error) {
     console.error(error);
+   
   }
 };
-//UNO MIS DOS SOLICITUDES
-const recipeD = async (id) => {
-  const dbID = id.includes("-");
-  if (dbID) {
-    //si mi id contiene un signo "-"
-    const getDb = await idDb(id);
-    return getDb;
+
+// Función para obtener los detalles de la receta desde la API o la base de datos
+const getRecipeById = async (id) => {
+  const isDbId = id.includes('-');
+
+  if (isDbId) {
+    return await getRecipeByIdFromDb(id);
   } else {
-    const allApi = await idRecipe(id);
-    return allApi;
+    return await getRecipeByIdFromApi(id);
   }
 };
 
@@ -233,7 +240,7 @@ router.get('/:id', async (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const data = await recipeD(id);
+    const data = await getRecipeById(id);
 
     if (data) {
       res.send(data);
