@@ -11,8 +11,8 @@ const getApiInfo = async () => {
     {
         const resApi = await axios.get(`${spoonacularURL}/recipes/complexSearch?number=100&addRecipeInformation=true&apiKey=${API_KEY}`);
         const { results } = resApi.data ;
-    
-        
+
+
         if (results.length > 0) {
 
             let response = await results?.map((r) => {
@@ -21,30 +21,30 @@ const getApiInfo = async () => {
                     vegetarian: r.vegetarian,
                     vegan: r.vegan,
                     glutenFree: r.glutenFree,
-                    dairyFree: r.dairyFree, 
-                    image: r.image, 
-                    idApi: r.id, 
+                    dairyFree: r.dairyFree,
+                    image: r.image,
+                    idApi: r.id,
                     score: r.spoonacularScore,
                     healthScore: r.healthScore,
-                    types: r.dishTypes?.map(element => element),  
-                    diets: r.diets?.map(element => element), 
-                    summary:r.summary, 
+                    types: r.dishTypes?.map(element => element),
+                    diets: r.diets?.map(element => element),
+                    summary:r.summary,
                     steps: (r.analyzedInstructions[0] && r.analyzedInstructions[0].steps?r.analyzedInstructions[0].steps.map(item=>item.step).join(" \n"):'')
-                }        
+                }
             })
 
         return response;
-    } 
+    }
 
     }catch (error) {
         console.error(error);
         return ([])
     }
-}                
+}
 
 const getDBInfo = async () => {
         try{
-            const dataDB =  await Recipe.findAll({ 
+            const dataDB =  await Recipe.findAll({
                 include:{
                     model: Diet,
                     attributes: ['name'],
@@ -84,7 +84,7 @@ const getDBInfo = async () => {
 
 //name
 const getApiByName = async (name) => {
-           
+
     try{
         const resAxios = await axios.get(`${spoonacularURL}/recipes/complexSearch?query=${name}&addRecipeInformation=true&number=100&apiKey=${API_KEY}`);
         const { results } = resAxios.data;
@@ -95,18 +95,18 @@ const getApiByName = async (name) => {
                     vegetarian: r.vegetarian,
                     vegan: r.vegan,
                     glutenFree: r.glutenFree,
-                    dairyFree: r.dairyFree, 
-                    image: r.image, 
-                    idApi: r.id, 
+                    dairyFree: r.dairyFree,
+                    image: r.image,
+                    idApi: r.id,
                     score: r.spoonacularScore,
                     healthScore: r.healthScore,
-                    types: r.dishTypes?.map(element => element),  
-                    diets: r.diets?.map(element => element), 
-                    summary:r.summary, 
+                    types: r.dishTypes?.map(element => element),
+                    diets: r.diets?.map(element => element),
+                    summary:r.summary,
                     steps: (r.analyzedInstructions[0] && r.analyzedInstructions[0].steps?r.analyzedInstructions[0].steps.map(item=>item.step).join(" \n"):'')
                 }
             })
-      return response           
+      return response
     }
 
     else{
@@ -120,18 +120,18 @@ const getApiByName = async (name) => {
     }
 }
 
-                 
+
 const getDBByName = async (name) => {
     try{
         const DBInfo = await getDBInfo();
         const filtByName = DBInfo.filter(recipe => recipe.name.includes(name));
-       
+
         return filtByName;
     }catch (error) {
         return ('error')
-    } 
+    }
 }
-                       
+
 const getInfoByName = async (name) => {
     try{
         const apiByName = await getApiByName(name)
@@ -141,9 +141,9 @@ const getInfoByName = async (name) => {
     }catch (error) {
         return ('error')
     }
-}     
+}
 
-//^       
+//^
 
 router.get('/', async (req, res) => {
 
@@ -161,9 +161,9 @@ if (name) {
     }
 
 }else{
-   
-    const allDate = await getAllInfo() 
-    if (allDate !== 'error'){  
+
+    const allDate = await getAllInfo()
+    if (allDate !== 'error'){
         res.json(allDate);
     }else{
         res.status(404).json({message:'Error en la búsqueda de datos'})
@@ -177,21 +177,22 @@ if (name) {
 // Función para obtener los detalles de la receta de la API
 const getRecipeByIdFromApi = async (id) => {
   try {
-    const response = await axios.get(`${spoonacularURL}/recipes/${id}/information?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+    const response = await axios.get(`${spoonacularURL}/recipes/${id}/information?apiKey=${API_KEY}`);
     if (response.status === 200) {
       const data = response.data;
+      //console.log({response,data})
       const info ={
-        name: data.title, 
+        name: data.title,
         vegetarian: data.vegetarian,
         vegan: data.vegan,
         glutenFree: data.glutenFree,
         dairyFree: data.dairyFree,
-        image: data.image, 
-        idApi: data.id, 
-        score: data.spoonacularScore, 
-        healthScore: data.healthScore, 
-        diets: data.diets?.map(element => element),types: data.dishTypes?.map(element => element), 
-        summary:data.summary, 
+        image: data.image,
+        idApi: data.id,
+        score: data.spoonacularScore,
+        healthScore: data.healthScore,
+        diets: data.diets?.map(element => element),types: data.dishTypes?.map(element => element),
+        summary:data.summary,
         steps: data.instructions
        }
       return info;
@@ -200,7 +201,7 @@ const getRecipeByIdFromApi = async (id) => {
     }
   } catch (error) {
     console.error(error);
-   
+
   }
 };
 
@@ -220,7 +221,7 @@ const getRecipeByIdFromDb = async (id) => {
     });
   } catch (error) {
     console.error(error);
-   
+
   }
 };
 
@@ -239,21 +240,25 @@ const getRecipeById = async (id) => {
 router.get('/:id', async (req, res, next) => {
   const id = req.params.id;
 
-  try {
+  try{
     const data = await getRecipeById(id);
-
     if (data) {
-      res.send(data);
+      res.json(data);
     } else {
       res.status(404).send('No se encontró la receta');
     }
-  } catch (error) {
-    next(error);
+  }catch (err) {
+    next(err);
   }
+  // try {
+  //   const data = await getRecipeByIdFromApi(id);
+
+  // } catch (error) {
+  //   next(error);
+  // }
 });
 
 module.exports = router;
 
 
 
- 
