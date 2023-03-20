@@ -250,12 +250,6 @@ router.get('/:id', async (req, res, next) => {
   }catch (err) {
     next(err);
   }
-  // try {
-  //   const data = await getRecipeByIdFromApi(id);
-
-  // } catch (error) {
-  //   next(error);
-  // }
 });
 
 module.exports = router;
