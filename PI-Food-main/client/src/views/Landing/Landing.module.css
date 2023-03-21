@@ -1,0 +1,44 @@
+.landing{
+    width: 100%;
+    height: 100vh;
+    background-size: 50%;
+    background-position: right;
+    background-position-y: bottom; 
+    text-align: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background: rgb(56,102,65);
+   
+    
+}
+.h1{
+    font-family: Goudy Old Style, Helvetica, sans-serif;
+    font-size: 10vh;
+    color: #fefdfd;
+    padding-top: 10rem;
+    margin-top: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.btn{
+    background-color: #ffffff;
+    border-color: #7A7A72;
+    color: #7A7A72;
+    border-radius: 2rem;
+    border-style: solid;
+    cursor: pointer;
+    padding: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    justify-content: space-around; 
+   
+}
+/*.body {
+    background-image: url('20230320_104159_0000.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+  }*/
