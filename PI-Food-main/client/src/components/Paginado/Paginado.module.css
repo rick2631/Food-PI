@@ -1,0 +1,27 @@
+.Paginado{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  
+    /* width: 100vw; */
+}
+.Number{
+    list-style: none;
+    
+}
+.btna{
+    /* justify-content: space-around; */
+    background-color: #c6c6c6;
+    border-color: #7A7A72;
+    color: #7A7A72;
+    border-radius: 0.5rem;
+    border-style: solid;
+    cursor: pointer;
+    padding: 0.7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    text-decoration-style: none;
+    margin: 0.3rem;
+    
+}

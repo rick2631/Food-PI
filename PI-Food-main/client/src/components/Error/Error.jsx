@@ -5,7 +5,7 @@ export default function Error () {
 
     return (
         <div>
-            <h1>No se encontraron raza</h1>
+            <h1>No se encontraron recetas</h1>
         </div>
     )
 }

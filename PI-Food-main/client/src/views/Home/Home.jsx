@@ -5,6 +5,7 @@ import { getRecipesAll, getTypes } from "../../redux/actions";
 import Card from "../../components/Card/Card";
 import Error from "../../components/Error/Error";
 import r from "../Home/Home.module.css";
+import Paginado from "../../components/Paginado/Paginado";
 
 
 export default function Home(){
@@ -29,8 +30,11 @@ export default function Home(){
         dispatch(getTypes())
       }, [])
 
-      
-    return  (
+      const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+
+    return  (<div>
         <div className={r.contenedor}>
         {recipesAll.length > 0 ? (
           currentRecipes?.map((r) => {
@@ -47,6 +51,16 @@ export default function Home(){
             })
             ) : (
               <Error />
-              )}
+              )} 
+              
+              <div>
+                      <Paginado
+                        recipesPage = {recipesPage}
+                        recipesAll = {recipesAll.length}
+                        paginado = {paginado}
+                    />
+             </div>
       </div>
+  </div>
+ 
     )}
