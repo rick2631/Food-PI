@@ -1,48 +1,41 @@
+import { FILTER_BY_DIETS, FILTER_BY_ORDER, FILTER_BY_SEARCHBAR, GET_RECIPES, GET_RECIPES_NAME, GET_STATE_ID, GET_TYPES, POST_RECIPES } from "./actions"
 
 
 
-const inicialState ={
+const inicialState = {
  recipes:[],
  recipesAll:[],
  types:[],
  detail:[]
 }
 
-function rootReducer(state = initialState, action) {
+function rootReducer(state = inicialState, action) {
 
  switch (action.types) {
 
   case GET_RECIPES:
-
+console.log(action.payload)
     return {
         ...state,
         recipes:action.payload,
         recipesAll:action.payload
 
     }
-    case GET_TYPES:{
+    case GET_TYPES:
     return{
         ...state,
-        types:action,payload
+        types:action.payload
+    
     }
-    }
-    case POST_RECIPES:{
+    case POST_RECIPES:
     return{
         ...state,
     }
-    }
+    
     case GET_STATE_ID:
-        const filtid = state.recipesAll
-        const idFind = filtid.find((recipe) => {
-            if(typeof action.payload === 'number'){
-                 if(recipe.idApi === action. payload) return recipe 
-            }else{
-                if (recipe.id === action.payload) return recipe  
-            }
-        })
-        return {
+        return{
             ...state,
-            detail:idFind
+            detail: action.payload
         }
 
      case GET_RECIPES_NAME:

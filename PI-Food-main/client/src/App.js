@@ -7,6 +7,12 @@ function App() {
     <div className="App">
        <Router>
         <Switch>
+        <Route path="/home" exact={true}>
+            <Home />
+          </Route>
+          <Route exact={true} path="/home/:id">
+            <Detail />
+          </Route>
           <Route exact={true} path="/">
             <Landing />
           </Route>

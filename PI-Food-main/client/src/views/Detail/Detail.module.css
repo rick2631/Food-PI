@@ -1,0 +1,58 @@
+.contenedor{
+    width: 50%;
+    height: auto;
+    background: #c6c6c6;
+    display: flex;
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px 0px rgb(0 0 0 / 30%);
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+}
+.h1{
+    margin-top: 0;
+    padding-top: 1rem;
+    color:#5c5c5c;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.h2{
+    margin-top: 0;
+    padding-top: 0;
+    color:#5c5c5c;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+.button{
+    justify-content: space-around;
+    background-color: #FAFAED;
+    border-color: #7A7A72;
+    color: #7A7A72;
+    border-radius: 0.5rem;
+    border-style: solid;
+    cursor: pointer;
+    padding: 0.7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .7rem;
+    text-decoration-style: none;
+    margin: 1rem;
+
+}
+.contenedor > img{
+    width: 50%;
+    height: 50%;
+}
+.card {
+	color: #080808df;
+	height: 100%;
+	width: auto;
+	margin: 50px auto;
+	display: flex;
+	max-width: 770px;
+	background-image: linear-gradient(to top, #e9e2e2 0%, #d4f9fd 99%, #fbfafb 100%);
+    box-shadow: 0 0 4px rgb(255 240 243), 0 0 8px rgb(235, 240, 248), 0 0 12px rgb(179, 188, 255), 0 0 16px rgb(143, 236, 255), 0 0 20px rgb(255 117 143), 0 0 24px rgb(77, 92, 255);}

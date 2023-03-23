@@ -1,10 +1,9 @@
-import axios from " axios";
+import axios from 'axios';
 export const POST_RECIPES = 'POST_RECIPES'
 export const GET_RECIPES = 'GET_RECIPES'
-export const GET_DATABASE = 'GET_DATABASE'
+//export const GET_DATABASE = 'GET_DATABASE'
 export const GET_TYPES = 'GET_TYPES'
 export const GET_STATE_ID = 'GET_STATE_ID'
-
 export const GET_RECIPES_ID = 'GET_RECIPES_ID'
 export const GET_RECIPES_NAME = 'GET_RECIPES_NAME'
 export const FILTER_BY_SEARCHBAR = 'FILTER_BY_SEARCHBAR'
@@ -25,8 +24,8 @@ export function getRecipesAll(){
       }
   };
 
-}export function getTypes() {
-    return function (dispatch) {
+export function getTypes(payload) {
+    return async function  (dispatch) {
         try {
             let types = await axios.get(`http://localhost:3001/types`)
             return dispatch({
@@ -53,28 +52,34 @@ export function postRecipes(payload){
         }
     }
 }
+//todo revisar 
 export function searchId(id) {
     return async function (dispatch) {
      try  {
         const recipe = await axios.get(`http://localhost:3001/recipe/${id}`)
-            return dispatch
+            return dispatch({
         type: GET_STATE_ID,
-        payload: recipe.payload}
+        payload: recipe.payload
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    
     }
 }
-
 export function searchBarName(payload) {
     return {
         type: FILTER_BY_SEARCHBAR,
         payload: payload
     }
+    
 }
 
 
 export function getRecipesName(name) {
     return async function (dispatch) {
         try {
-            const recipes = await axios.get(`${REACT_APP_SERVER}/recipes?name=${name}`)
+            const recipes = await axios.get(`http://localhost:3001/recipe?name=${name}`)
             return dispatch({
                 type: GET_RECIPES_NAME,
                 payload: recipes.data
