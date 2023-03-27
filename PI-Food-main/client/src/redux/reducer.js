@@ -14,7 +14,8 @@ function rootReducer(state = inicialState, action) {
  switch (action.types) {
 
   case GET_RECIPES:
-console.log(action.payload)
+
+//console.log(action.payload)
     return {
         ...state,
         recipes:action.payload,

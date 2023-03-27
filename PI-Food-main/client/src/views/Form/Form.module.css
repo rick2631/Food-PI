@@ -1,0 +1,80 @@
+.contenedor{
+    background-color: #b8432f;
+}
+
+.h2{
+    margin-top: 0;
+    padding-top: 2rem;
+    color:#5c5c5c;
+    font-family: Arial, Helvetica, sans-serif
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    background: rgb(56,102,65);
+    border: 5c5c5c, solid, 5px;
+    max-width: 100%;
+    align-items: center;
+    align-content: center;
+}
+
+.buttonform{
+    justify-content: space-around;
+    background-color: #FAFAE8;
+    border-color: #3c3eb0;
+    color: #7A7A72;
+    border-radius: 0.5rem;
+    border-style: solid;
+    cursor: pointer;
+    padding: 0.7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 1rem;
+}
+.buttonform:disabled{
+    text-decoration: line-through;
+    background-color: #984545;
+    border-color: #984545;
+    color: #FAFAED;
+}
+
+.temp{
+    background-color: #FAFAED;
+    color:#7A7A72;
+    border-style: #7A7A72, solid, 12px;
+    border-radius: 0.5rem;
+    margin: 0.2rem;
+    padding: 1rem;
+    font-family: Arial, Helvetica, sans-serif
+}
+.input{
+    background-color: #FAFAED;
+    color:#7A7A72;
+    border-style: solid;
+    border-color: #7A7A72;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.input option{
+    background-color: #FAFAED;
+    color:#7A7A72;
+    font-family: Arial, Helvetica, sans-serif  
+}
+.buttondelete{
+    justify-content: space-around;
+    background-color: #984545;
+    border-color: #984545;
+    color: #FAFAED;
+    border-radius: 0.5rem;
+    border-style: solid;
+    cursor: pointer;
+    padding: 0.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-left: 1rem;
+}

@@ -1,26 +1,45 @@
 import React from 'react';
 import { useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
-import { searchId } from '../../redux/actions'
-import CardCss from '../Card/Card.module.css';
+//import { searchId } from '../../redux/actions'
+import s from '../Card/Card.module.css';
 
-export default function Card({id, name, image, diets, types}){
-    const dispatch = useDispatch();
-   
+export default function Card(props) {
+    // acá va tu código
+  
+  let types = [];
+
+    if(props.types){
+
+      props.types.forEach(type => types.push(type.name) )
+
+    }
+
+    let diets = types.length > 0 ? types : props.diets;
     
-    return(
-             <Link className = {CardCss.link} to={'/home/' + id} onClick={()=>dispatch(searchId(id))}> 
-        <div className={CardCss.card}>
-            <h2 className={CardCss.title}>{name}</h2>
-            <div className= {CardCss.divimagen}>
-            <img  className = {CardCss.image} src = {image} alt = 'img not found' />
-            <h1>Diets Types: </h1> {diets?.map((diet, index) => <> {diet}, </> )}
-            <h1>Dish Types:</h1>{types?.map((dish, index)=> <> {dish.name ? dish.name : dish}, </>)}
- 
-            </div>
-         
-        </div>
 
+
+    return( 
+      <div className={s.card} >
+          <img className={s.image} src={props.image} alt="" />
+          <div className={s.textContainer}>
+            <Link className={s.link} to={`/recipes/${props.id}`}>
+              <span className={s.text}>{props.title}</span>
             </Link>
+            <div className={s.punctuation}>
+              {
+                diets ? diets.map(d =>(
+                  <div key={d}>
+                      <span  className={s.typeText}>{d}</span>
+                    
+                   </div>
+                )) : ""
+              }
+              
+            </div>
+          </div>
+          
+         
+      </div>
     )
-}
+  };

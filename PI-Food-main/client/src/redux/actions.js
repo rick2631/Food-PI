@@ -24,7 +24,7 @@ export function getRecipesAll(){
       }
   };
 
-export function getTypes(payload) {
+export function getTypes() {
     return async function  (dispatch) {
         try {
             let types = await axios.get(`http://localhost:3001/types`)

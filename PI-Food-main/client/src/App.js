@@ -7,8 +7,11 @@ function App() {
     <div className="App">
        <Router>
         <Switch>
-        <Route path="/home" exact={true}>
+          <Route path="/home" exact={true}>
             <Home />
+          </Route>
+          <Route exact={true} path="/create">
+            <Form />
           </Route>
           <Route exact={true} path="/home/:id">
             <Detail />
@@ -16,8 +19,8 @@ function App() {
           <Route exact={true} path="/">
             <Landing />
           </Route>
-          </Switch>
-          </Router>
+        </Switch>
+      </Router>
     </div>
   );
 }

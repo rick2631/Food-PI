@@ -1,0 +1,26 @@
+
+.select{
+    background-color: #FAFAED;
+    color:#7A7A72;
+    border-style: solid;
+    border-color: #7A7A72;
+    border-radius: 0.5rem;
+    /* margin: 1rem; */
+    padding: 0.4rem;
+    border-width: .1rem;
+}
+
+.button{justify-content: space-around;
+background-color: #FAFAE8;
+border-color: #7A7A72;
+border-width: .1rem;
+color: #7A7A72;
+border-radius: 0.5rem;
+border-style: solid;
+cursor: pointer;
+padding: 0.35rem;
+font-family: Arial, Helvetica, sans-serif;
+font-size: .9rem;
+text-decoration: none;
+/* margin: .5rem; */
+}
