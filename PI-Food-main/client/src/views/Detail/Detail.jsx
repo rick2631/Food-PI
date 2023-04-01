@@ -26,9 +26,9 @@ export default function Detail (){
             <div className={ DetailsCss.card}>
                 <div className={ DetailsCss.card}>
                     <div className={ DetailsCss.card_detailfood}>
-                    <h1 className={ DetailsCss.name}>{detailfood.name}</h1>
-                    <h1 className={ DetailsCss.types}> {detailfood.types?.map((dish, index)=> <p key={index} >{dish.name ? dish.name : dish}</p>)}</h1>
-                    <h1 className={ DetailsCss.diets}> {detailfood.diets?.map((diet, index) => <p key={index} >{diet}</p>)}</h1>
+                    <h5 className={ DetailsCss.name}>{detailfood.name}</h5>
+                    <h2 className={ DetailsCss.types}> {detailfood.types?.map((dish, index)=> <p key={index} >{dish.name ? dish.name : dish}</p>)}</h2>
+                    <h2 className={ DetailsCss.diets}> {detailfood.diets?.map((diet, index) => <p key={index} >{diet}</p>)}</h2>
                     <img src={detailfood.image}alt={`${detailfood.name}' DetailsCss`} width="400px" height="100px" />
                         
                     </div>

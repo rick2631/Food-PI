@@ -48,11 +48,16 @@
     height: 50%;
 }
 .card {
-	color: #080808df;
-	height: 100%;
-	width: auto;
-	margin: 50px auto;
-	display: flex;
-	max-width: 770px;
-	background-image: linear-gradient(to top, #e9e2e2 0%, #d4f9fd 99%, #fbfafb 100%);
-    box-shadow: 0 0 4px rgb(255 240 243), 0 0 8px rgb(235, 240, 248), 0 0 12px rgb(179, 188, 255), 0 0 16px rgb(143, 236, 255), 0 0 20px rgb(255 117 143), 0 0 24px rgb(77, 92, 255);}
+    background: rgb(250, 250, 237);
+    width: 20vw;
+    height: 43vh;
+    margin: 20px 20px 5px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+     position: relative;
+}

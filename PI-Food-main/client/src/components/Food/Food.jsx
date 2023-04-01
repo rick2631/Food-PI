@@ -28,11 +28,11 @@ console.log(currentRecipes)
           currentRecipes?.map((r) => {
             return (
               <Card
-                    title = {r.name}
+                    name = {r.name}
                     image={r.image}
                     key={r.id}
                     healthScore={r.healthScore}
-                    likes={r.aggregateLikes}
+                   // likes={r.aggregateLikes}
                     diets={r.diets}
                     types = {r.types}
                     id={r.idApi ? r.idApi : r.id}
