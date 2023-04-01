@@ -7,18 +7,29 @@ import  DetailsCss from "../Detail/Detail.module.css";
 
 export default function Detail (){
     
-    const detail = useSelector((state) => state.detail) 
+    
+    const { id } = useParams()
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(searchId(id));
+
+    },[id,dispatch])
+
+    const { detail: detailfood } = useSelector((state) => state)
+
+    //console.log(detailfood)
 
         
     return(
         <div className={ DetailsCss.contenedor}>
             <div className={ DetailsCss.card}>
                 <div className={ DetailsCss.card}>
-                    <div className={ DetailsCss.card_detailFood}>
-                    <h1 className={ DetailsCss.name}>{detail.name}</h1>
-                    <h1 className={ DetailsCss.types}> {detail.types?.map((dish, index)=> <p key={index} >{dish.name ? dish.name : dish}</p>)}</h1>
-                    <h1 className={ DetailsCss.diets}> {detail.diets?.map((diet, index) => <p key={index} >{diet}</p>)}</h1>
-                    <image src={detail.image} className='img' alt= {'spoonaacular'} />
+                    <div className={ DetailsCss.card_detailfood}>
+                    <h1 className={ DetailsCss.name}>{detailfood.name}</h1>
+                    <h1 className={ DetailsCss.types}> {detailfood.types?.map((dish, index)=> <p key={index} >{dish.name ? dish.name : dish}</p>)}</h1>
+                    <h1 className={ DetailsCss.diets}> {detailfood.diets?.map((diet, index) => <p key={index} >{diet}</p>)}</h1>
+                    <img src={detailfood.image}alt={`${detailfood.name}' DetailsCss`} width="400px" height="100px" />
                         
                     </div>
                 </div>

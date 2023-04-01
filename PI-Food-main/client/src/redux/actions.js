@@ -61,14 +61,14 @@ export function postRecipes(payload){
         }
     }
 }
-//todo revisar 
+
 export function searchId(id) {
     return async function (dispatch) {
      try  {
         const recipe = await axios.get(`http://localhost:3001/recipe/${id}`)
             return dispatch({
         type: GET_STATE_ID,
-        payload: recipe.payload
+        payload: recipe.data
             })
         } catch (error) {
             console.log(error);
