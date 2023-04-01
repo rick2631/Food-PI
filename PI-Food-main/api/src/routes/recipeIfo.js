@@ -153,7 +153,7 @@ if (name) {
 
     const infoByName = await getInfoByName(name);
     if (infoByName !== 'error'){
-        console.log("Se encontro coincidencia con name")
+        //console.log("Se encontro coincidencia con name")
         infoByName.length > 0 ? res.json(infoByName) : res.status(400).json([{ name: 'not found any recipes'}]);
     }else{
         console.log("Error")

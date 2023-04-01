@@ -13,16 +13,25 @@ export const FILTER_BY_DIETS = 'FILTER_BY_DIETS'
 
 
 export function getRecipesAll(){
-    return async function(dispatch){
-        let json = await axios.get(`http://localhost:3001/recipe`); //conexion btween front and back
+    // return  function(dispatch){
+    //     let json =  axios.get(`http://localhost:3001/recipe`); //conexion btween front and back
       
-          return dispatch({
-              type: GET_RECIPES,
-              payload: json.data
-          })
-  
-      }
-  };
+    //       return dispatch({
+    //           type: GET_RECIPES,
+    //           payload: json.data
+    //       })
+    return function(dispatch){
+        axios.get(`http://localhost:3001/recipe`)
+       .then((json) => {
+       return dispatch({
+           type: GET_RECIPES,
+           payload: json.data
+       })
+   }).catch((error) => {
+       console.log(error)
+   })
+}
+}
 
 export function getTypes() {
     return async function  (dispatch) {

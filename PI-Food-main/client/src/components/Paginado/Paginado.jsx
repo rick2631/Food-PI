@@ -5,7 +5,7 @@ import modules from "../Paginado/Paginado.module.css";
 export default function Paginado({recipesPage,recipesAll,paginado }){
     const pageNumber = [];
 
-    for(let i = 1; i <= Math.ceil(recipesAll/recipesPage); i++){
+    for(let i = 1; i <= Math.ceil(recipesAll / recipesPage); i++){
         pageNumber.push(i)
     }
 

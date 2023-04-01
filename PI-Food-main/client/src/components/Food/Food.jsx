@@ -1,24 +1,25 @@
 import React from "react";
-import { getRecipesAll } from "../../redux/actions";
-import { useEffect,useState } from "react";
+//import { getRecipesAll } from "../../redux/actions";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Error from "../Error/Error";
-import Card from "../Card/Card";
+import {Card} from "../Card/Card";
 import r from "../Food/Food.module.css";
 
 
 
 
-export const Food = ({currentRecipes}) => {
+ const Food = ({currentRecipes}) => {
     const dispatch = useDispatch()
-    const [cargar,setCarga] = useState(true);
-    
+   // const recipesAll = useSelector((state) => state.recipesAll);
+    //const [cargar,setCarga] = useState(true);
+    //console.log(recipesAll)
 
     useEffect(() => {
-        dispatch(getRecipesAll()).then(() => setCarga(false)) 
+   //dispatch(getRecipesAll() )
     }, [dispatch])
 
-   console.log(currentRecipes)
+console.log(currentRecipes)
     
     
       return (
@@ -27,14 +28,14 @@ export const Food = ({currentRecipes}) => {
           currentRecipes?.map((r) => {
             return (
               <Card
-                    title = {r.title}
+                    title = {r.name}
                     image={r.image}
-                    key={r.id ? r.id : r.code}
+                    key={r.id}
                     healthScore={r.healthScore}
                     likes={r.aggregateLikes}
                     diets={r.diets}
                     types = {r.types}
-                    id={r.id ? r.id : r.code}
+                    id={r.idApi ? r.idApi : r.id}
                 />
               );
             })
@@ -45,3 +46,4 @@ export const Food = ({currentRecipes}) => {
 );
   
 }
+export default Food;

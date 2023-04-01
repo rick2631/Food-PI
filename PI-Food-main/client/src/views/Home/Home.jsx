@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { getRecipesAll, getTypes } from "../../redux/actions";
-//import Paginado from "../../components/Paginado/Paginado";
-import { Food } from "../../components/Food/Food";
+import Paginado from "../../components/Paginado/Paginado";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Filter from "../../components/Filter/Filter";
+import { getRecipesAll, getTypes } from "../../redux/actions";
+import  Food from '../../components/Food/Food';
 
 
 export default function Home() {
@@ -23,6 +23,7 @@ export default function Home() {
     ? recipesAll.slice(indexFirstRecipe, indexLastRecipe)
     : [];
 
+
   useEffect(() => {
     dispatch(getRecipesAll());
   }, []);
@@ -30,9 +31,10 @@ export default function Home() {
   useEffect(() => {
     dispatch(getTypes());
   }, []);
-
+  //console.log(typesAll);
+  //console.log(recipesAll);
   const paginado = (pageNumber) => {
-    setCurrentPage(pageNumber);
+   setCurrentPage(pageNumber);
   };
 
   return (
@@ -51,11 +53,11 @@ export default function Home() {
         <Food currentRecipes={currentRecipes} />
       </div>
       <div>
-        {/* <Paginado
-                        recipesPage = {recipesPage}
-                        recipesAll = {recipesAll.length}
-                        paginado= {paginado}
-                    /> */}
+         <Paginado
+                      recipesPage = {recipesPage}
+                      recipesAll = {recipesAll.length}
+                      paginado = {paginado}
+                    /> 
       </div>
     </div>
   );

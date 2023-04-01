@@ -1,45 +1,29 @@
 import React from 'react';
 import { useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
-//import { searchId } from '../../redux/actions'
-import s from '../Card/Card.module.css';
+import { searchId } from '../../redux/actions'
+import CardCss from '../Card/Card.module.css';
+import { useHistory } from "react-router-dom";
 
-export default function Card(props) {
-    // acá va tu código
+
+ export function Card({id, name, image, diets, types}) {
+ 
+     const dispatch = useDispatch();
+     const navegate = useHistory();
   
-  let types = [];
-
-    if(props.types){
-
-      props.types.forEach(type => types.push(type.name) )
-
-    }
-
-    let diets = types.length > 0 ? types : props.diets;
-    
-
-
-    return( 
-      <div className={s.card} >
-          <img className={s.image} src={props.image} alt="" />
-          <div className={s.textContainer}>
-            <Link className={s.link} to={`/recipes/${props.id}`}>
-              <span className={s.text}>{props.title}</span>
-            </Link>
-            <div className={s.punctuation}>
-              {
-                diets ? diets.map(d =>(
-                  <div key={d}>
-                      <span  className={s.typeText}>{d}</span>
-                    
-                   </div>
-                )) : ""
-              }
-              
-            </div>
-          </div>
-          
-         
-      </div>
-    )
-  };
+  async function handleId(id){
+      dispatch(searchId(id));
+      navegate('/home/id');
+  }
+   return(
+    <div>
+        <div className={CardCss.card}>
+    <img className = {CardCss.img} src={image} alt= 'image' onClick={() => handleId(id)}/>
+    <h2 className={CardCss.title}>{name}</h2>
+    <h5 className={CardCss.diets} > {diets?.map((diet, index) => <> {diet}, </> )}</h5>
+    <h5 className={CardCss.types}>  {types?.map((dish, index)=> <> {dish.name ? dish.name : dish}, </>)}</h5>
+    </div>
+    </div>
+   )
+   }
+ 
