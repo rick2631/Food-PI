@@ -47,7 +47,7 @@ export default function Home() {
         />
       </div>
       <div>
-        <SearchBar />
+                                       <SearchBar/>
       </div>
       <div>
         <Food currentRecipes={currentRecipes} />

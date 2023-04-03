@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
 import { filterByOrder, getFilterByDiets, orderByScore } from "../../redux/actions";
+import s from '../Filter/Filter.module.css'
 
 export default function Filter({typesAll,setCurrentPage, setOrder}) {
     const dispatch = useDispatch();
@@ -30,8 +31,8 @@ export default function Filter({typesAll,setCurrentPage, setOrder}) {
 
     return (
                 <div>
-           
-                       <select defaultValue='Filter by Order' onChange={evt => handleFilterByOrder(evt)}>
+           <div className={s.filters}>
+                       <select defaultValue='Filter by Order' className={s.select} onChange={evt => handleFilterByOrder(evt)}>
                             <option disabled>Filter by Order</option>
                             <option key= 'up' value = 'up'>Upward</option>
                             <option key= 'down' value = 'down'>Descendant</option>
@@ -39,20 +40,20 @@ export default function Filter({typesAll,setCurrentPage, setOrder}) {
                    
                    
                    
-                        <select defaultValue='Filter by type' onChange={evt => handleFilterByDiets(evt)}>
+                        <select defaultValue='Filter by type' className={s.select}  onChange={evt => handleFilterByDiets(evt)}>
                             <option disabled>Filter by type</option>
                             {typesAll?.map((type) => <option key={type.name} value={type.name}>{type.name}</option>)}
                         </select>  
                     
 
                   
-                        <select defaultValue='Order by score' onChange={evt => handleOrderByScore(evt)}>
+                        <select defaultValue='Order by score' className={s.select} onChange={evt => handleOrderByScore(evt)}>
                             <option disabled>Order by score</option>
-                            <option key= 'SSc' value= 'SSc'>Spooncular Score</option>
-                            <option key= 'HSc' value= 'HSc'>health Score</option>
+                            <option value="high"> High score </option>
+                             <option value="low"> Low score </option>
                         </select>
                    
-       
+       </div>
   </div>      
     )
 

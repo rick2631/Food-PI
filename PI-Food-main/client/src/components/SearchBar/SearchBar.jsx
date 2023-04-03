@@ -8,20 +8,18 @@ import SearchBarCss from "../SearchBar/SearchBar.module.css"
 export default function SearchBar(){
     const dispatch = useDispatch();
     const [name, setName] = useState('');
- 
-    function handleInput(evt){
-        evt.preventDefault();
-        setName(evt.target.value);
-        dispatch(searchBarName(evt.target.value))
+
+    function onChange(e){
+        console.log(name)
+        e.preventDefault()
+        setName(e.target.value); 
     }
- 
-    function handleSubmit(evt){
-        evt.preventDefault();
-        if(name){
-            dispatch(getRecipesName(name));
-            setName('')   // poner el estado en cero otra  vez
-        }
-    } 
+
+    function handleSubmit(e){
+
+        e.preventDefault();
+        dispatch(getRecipesName(name))
+    }
 
     return(
         <div>
@@ -30,8 +28,8 @@ export default function SearchBar(){
             type="text"
             name="name"
             autoComplete="on"
-            placeholder="Enter breed..."
-            onChange={evt => handleInput(evt)}
+            placeholder="Enter..."
+            onChange={(e) => onChange(e)}
             className={SearchBarCss.select}
             />
             <button className={SearchBarCss.button}type="submit" onClick={(e) => handleSubmit(e)}>Search</button>

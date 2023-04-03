@@ -7,6 +7,7 @@ import {
     FILTER_BY_DIETS,
     FILTER_BY_ORDER,
     FILTER_BY_SEARCHBAR,
+    ORDER_BY_SCORE,
 } from "./actions";
 
 const inicialState = {
@@ -41,24 +42,38 @@ function rootReducer(state = inicialState, action) {
         detail: action.payload
     }
                             
-
-    //  case GET_RECIPES_NAME:
+      case GET_RECIPES_NAME:
     //                     const addRecipe = state.recipesAll
     //                       return {
     //                                 ...state,
 
     //                                 recipesAll: addRecipe
     //                             }
-    case FILTER_BY_SEARCHBAR:
-      const filteSearch = state.recipesAll;
-      const filtOnState = filteSearch.filter((recipe) => {
-        let name = recipe.name.tolowercase();
-        if (name.includes(action.payload)) return recipe;
-      });
+    //case FILTER_BY_SEARCHBAR:
+      // const filteSearch = state.recipesAll;
+      // const filtOnState = filteSearch.filter((recipe) => {
+      //   let name = String(recipe.name).toLowerCase();
+      //   if (name.includes(action.payload)) return recipe;
+      // });
       return {
         ...state,
-        recipes: filtOnState,
+        recipesAll: action.payload
       };
+      case ORDER_BY_SCORE:
+
+      const recypesByScore = action.payload === 'SSc' ? state.recipesAll.sort((a, b) => {
+                     
+      if ((a.score - b.score) < 0) return 1
+          else return -1
+         }) : state.recipesAll.sort((a, b) => {
+                          
+                          if ((a.healthScore - b.healthScore) < 0) return 1
+                          else return -1
+                      })
+                      return{
+                          ...state,
+                          recipes: recypesByScore
+                      } 
 
     case FILTER_BY_ORDER:
       const recypesByOrder =

@@ -1,6 +1,7 @@
 
 .contenedor {
     text-align: center;
+    align-items: center;
 }
 
 .contenedor img {
@@ -8,4 +9,5 @@
     height: 200px;
     margin-top: 20px;
     text-align: center;
+    align-items: center;
 }

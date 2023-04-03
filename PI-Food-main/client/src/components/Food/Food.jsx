@@ -31,11 +31,9 @@ console.log(currentRecipes)
                     name = {r.name}
                     image={r.image}
                     key={r.id}
-                    healthScore={r.healthScore}
-                   // likes={r.aggregateLikes}
                     diets={r.diets}
                     types = {r.types}
-                    id={r.idApi ? r.idApi : r.id}
+                    //id={r.idApi ? r.idApi : r.id}
                 />
               );
             })

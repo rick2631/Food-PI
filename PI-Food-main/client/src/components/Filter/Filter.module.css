@@ -1,0 +1,28 @@
+.select {
+    font-family: 'Poppins';
+    display: block;
+    width: 8%;
+    height: 30px;
+    padding: 5px 12px;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 7px;
+    background: linear-gradient(to right bottom,
+            rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(5px);
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25);
+    outline: none;
+    font-size: 13px;
+}
+
+
+.filters {
+    font-family: 'Poppins';
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 6rem;
+}
+
