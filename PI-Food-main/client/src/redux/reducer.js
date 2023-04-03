@@ -43,21 +43,10 @@ function rootReducer(state = inicialState, action) {
     }
                             
       case GET_RECIPES_NAME:
-    //                     const addRecipe = state.recipesAll
-    //                       return {
-    //                                 ...state,
-
-    //                                 recipesAll: addRecipe
-    //                             }
-    //case FILTER_BY_SEARCHBAR:
-      // const filteSearch = state.recipesAll;
-      // const filtOnState = filteSearch.filter((recipe) => {
-      //   let name = String(recipe.name).toLowerCase();
-      //   if (name.includes(action.payload)) return recipe;
-      // });
+   
       return {
         ...state,
-        recipesAll: action.payload
+        recipes: action.payload
       };
       case ORDER_BY_SCORE:
 

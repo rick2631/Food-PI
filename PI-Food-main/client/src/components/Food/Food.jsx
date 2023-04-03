@@ -33,7 +33,7 @@ console.log(currentRecipes)
                     key={r.id}
                     diets={r.diets}
                     types = {r.types}
-                    //id={r.idApi ? r.idApi : r.id}
+                  id={r.idApi ? r.idApi : r.id}
                 />
               );
             })
