@@ -25,12 +25,12 @@ console.log(currentRecipes)
       return (
         <div className={r.contenedor}>
         {currentRecipes.length > 0 ? (
-          currentRecipes?.map((r) => {
+          currentRecipes?.map((r,id) => {
             return (
               <Card
                     name = {r.name}
                     image={r.image}
-                    key={r.id}
+                    key={`${r.id}-${id}`}
                     diets={r.diets}
                     types = {r.types}
                   id={r.idApi ? r.idApi : r.id}

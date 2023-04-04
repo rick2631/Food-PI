@@ -42,7 +42,7 @@ export default function Filter({typesAll,setCurrentPage, setOrder}) {
                    
                         <select defaultValue='Filter by type' className={s.select}  onChange={evt => handleFilterByDiets(evt)}>
                             <option disabled>Filter by type</option>
-                            {typesAll?.map((type) => <option key={type.name} value={type.name}>{type.name}</option>)}
+                            {typesAll?.map((type,id) => <option key={`${type.name}-${id}`} value={type.name}>{type.name}</option>)}
                         </select>  
                     
 

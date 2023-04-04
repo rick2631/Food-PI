@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
      const dispatch = useDispatch();
      const navegate = useHistory();
   
-  async function handleId(id){
+  function handleId(id){
       dispatch(searchId(id));
       navegate('/home/id');
   }
@@ -21,8 +21,8 @@ import { useHistory } from "react-router-dom";
         <div className={CardCss.card}>
     <img className = {CardCss.img} src={image} alt= 'image' onClick={() => handleId(id)}/>
     <h2 className={CardCss.title}>{name}</h2>
-    <h5 className={CardCss.diets} > {diets?.map((diet) => <> {diet}, </> )}</h5>
-    <h5 className={CardCss.types}>  {types?.map((dish)=> <> {dish.name ? dish.name : dish}, </>)}</h5>
+    <h5 className={CardCss.diets} > {diets?.map((diet,id) => <span key={`${id}-dieta`}> {diet}, </span> )}</h5>
+    <h5 className={CardCss.types}>  {types?.map((dish,id)=> <span key ={`${id}-plato`}> {dish.name ? dish.name : dish}, </span>)}</h5>
     </div>
     </div>
    )

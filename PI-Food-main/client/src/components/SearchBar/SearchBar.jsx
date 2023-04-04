@@ -10,13 +10,13 @@ export default function SearchBar(){
     const [name, setName] = useState('');
 
     function onChange(e){
-        console.log(name)
         e.preventDefault()
         setName(e.target.value); 
+        console.log(name)
     }
-
+    
     function handleSubmit(e){
-
+        
         e.preventDefault();
         dispatch(getRecipesName(name))
     }
@@ -29,8 +29,9 @@ export default function SearchBar(){
             name="name"
             autoComplete="on"
             placeholder="Enter..."
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             className={SearchBarCss.select}
+            value={name}
             />
             <button className={SearchBarCss.button}type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
         </div>)
