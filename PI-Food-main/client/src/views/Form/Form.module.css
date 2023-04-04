@@ -1,5 +1,5 @@
 .contenedor{
-    background-color: #b8432f;
+    background-color: #f4f9f3;
 }
 
 .h2{
@@ -11,7 +11,7 @@
 .form{
     display: flex;
     flex-direction: column;
-    background: rgb(56,102,65);
+    background:  #acc95f;
     border: 5c5c5c, solid, 5px;
     max-width: 100%;
     align-items: center;
