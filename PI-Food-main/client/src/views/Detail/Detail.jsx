@@ -29,7 +29,7 @@ export default function Detail (){
                     <h5 className={ DetailsCss.name}>{detailfood.name}</h5>
                     <h2 className={ DetailsCss.types}> {detailfood.types?.map((dish, index)=> <p key={index} >{dish[0].toUpperCase() + dish.slice(1)}</p>)}</h2>
                     <center><img className={DetailsCss.img}src={detailfood.image}alt={``} width="200px" height="200px" /></center>
-                    {/* <h2 className={ DetailsCss.diets}> {detailfood.diets?.map((diet, index) => <p key={index} >{diet[0].toUpperCase() + diet.slice(1)}</p>)}</h2> */}
+                     <h2 className={ DetailsCss.diets}> {detailfood.diets?.map((diet, index) => <p key={index} > {diet.name ? diet.name : diet},</p>)}</h2> 
                     <h3 className={DetailsCss.subTitle}>Summary</h3>
                     <p className={DetailsCss.summary}>{detailfood.summary && detailfood.summary.replace(/<[^>]+>/g, "")}</p>
                     <div className={DetailsCss.healths}>

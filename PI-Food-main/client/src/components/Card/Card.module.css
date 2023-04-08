@@ -13,9 +13,9 @@
      position: relative;
 }
 
-/* .card:hover {
+.card:hover {
     transform: scale(1.07);
-}  */
+} 
 
 .title {
     padding: 3px;

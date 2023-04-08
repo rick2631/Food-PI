@@ -20,7 +20,7 @@ const inicialState = {
 function rootReducer(state = inicialState, action) {
   switch (action.type) {
     case GET_RECIPES:
-      console.log(action.payload);
+     // console.log(action.payload);
       return {
         ...state,
         recipes: action.payload,

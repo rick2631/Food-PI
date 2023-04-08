@@ -34,7 +34,7 @@ console.log(currentRecipes)
                     diets={r.diets}
                     healthScore={r.healthScore}
                     types = {r.types}
-                  id={r.idApi ? r.idApi : r.id}
+                    id={r.idApi ? r.idApi : r.id}
                 />
               );
             })

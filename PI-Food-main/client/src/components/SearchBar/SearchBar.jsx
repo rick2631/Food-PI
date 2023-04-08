@@ -33,7 +33,7 @@ export default function SearchBar(){
             className={SearchBarCss.select}
             value={name}
             />
-            <button className={SearchBarCss.button}type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
+          <button className={SearchBarCss.button}type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
         </div>)
 }
 
