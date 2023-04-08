@@ -12,43 +12,99 @@
     justify-content: center;
      position: relative;}
 
-.name{margin-top: 0;
-    padding-top: 1rem;
-    color:#9d7f7f;
+.name{
+    padding: 3px;
     font-family: Arial, Helvetica, sans-serif;
-
+    text-decoration: 'none';
+    color: #2f2e2e;
+    text-align: center;
+    font-size: 40px;
 }
 
 .diets{
-    margin-top: 0;
-    padding-top: 1rem;
-    color:#9d7f7f;
+    padding: 0px;
+    font-size: 10px;
+    color: #292828;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    text-decoration: 'none';
 }
 .types{
-    margin-top: 0;
-    padding-top: 0;
-    color:#c13636;
+    padding: 0px;
+    font-size: 10px;
+    color: #292828;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
+    text-align: center;
+    text-decoration: 'none';
 }
-.button{
-    justify-content: space-around;
-    background-color: #FAFAED;
-    border-color: #131311;
-    color: #080e07;
-    border-radius: 0.5rem;
-    border-style: solid;
-    cursor: pointer;
-    padding: 0.7rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: .7rem;
-    text-decoration-style: none;
-    margin: 1rem;
 
+.summary{
+    padding: 0px;
+    font-size: 15px;
+    color: #292828;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    text-decoration: 'none';
+    
 }
 .img{
-   width: 300px;
-   border-radius:20px;
-  
+    padding: 3px;
+    overflow: hidden; 
+    height: 300;
+    width: 300;
+    border-radius: 15px;
+    background-position:center;
+    
 }
+
+.subTitle{
+    text-align: center;}
+   
+ .button{
+        justify-content: space-around;
+        background-color: #FAFAED;
+        border-color: #131311;
+        color: #080e07;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        padding: 0.7rem;
+        font-family: Arial, Helvetica, sans-serif;
+        border-style: solid;
+        font-size: .7rem;
+        text-decoration-style: none;
+        margin: 1rem;
+    
+    }
+   
+  
+    
+    .progress {
+        /* Estilos para la barra de progreso */
+        height: 20px;
+        background-color: #eee;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .progress-bar {
+        /* Estilos para la barra de progreso en sí */
+        height: 100%;
+        width: 100%;
+        background-color: #1e87f0;
+        position: relative;
+        transition: width 0.5s ease;
+    }
+    
+    .stars {
+        /* Estilos para las estrellas de progreso */
+        display: block;
+        height: 100%;
+        color: #f9c74f;
+        font-size: 16px;
+        line-height: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    
+
+    

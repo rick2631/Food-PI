@@ -37,6 +37,7 @@ function rootReducer(state = inicialState, action) {
       };
 
     case GET_STATE_ID:
+      
       return {
         ...state,
         detail: action.payload

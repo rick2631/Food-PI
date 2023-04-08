@@ -32,13 +32,14 @@ console.log(currentRecipes)
                     image={r.image}
                     key={`${r.id}-${id}`}
                     diets={r.diets}
+                    healthScore={r.healthScore}
                     types = {r.types}
                   id={r.idApi ? r.idApi : r.id}
                 />
               );
             })
             ) : (
-  <Error />
+              <centro><Error /></centro>
               )} 
 </div>
 );

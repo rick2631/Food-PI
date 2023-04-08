@@ -19,7 +19,7 @@ function validate(input) {
 
 export default function Form() {
   const dispatch = useDispatch();
-  //const history = useHistory();
+  const history = useHistory();
 
   const type = useSelector((state) => state.types);
   const allState = useSelector((state) => state.recipesAll);
@@ -35,7 +35,9 @@ export default function Form() {
       "https://st.depositphotos.com/1987177/3470/v/600/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg",
     steps: "",
     diets: [],
+    
   });
+
 
   useEffect(() => {
     dispatch(getTypes());
@@ -47,10 +49,12 @@ export default function Form() {
     }
     return true;
   }
-
-  async function handleSubmit(evt) {
+  
+  function handleSubmit(evt) {
     evt.preventDefault();
     dispatch(postRecipes(input));
+    history.push('/home')
+    alert('Felicidades recipe creado!')
   }
 
   function handleSelect(evt) {
@@ -84,7 +88,7 @@ export default function Form() {
         [evt.target.name]: "Recipe is found",
       });
     }
-    console.log(input);
+    //console.log(input);
   }
 
   function handleNumber(evt) {
@@ -101,112 +105,128 @@ export default function Form() {
     }
     // console.log(input)
   }
-  //history.push('/home')
 
   function handleDelete(evt) {
+    //evt.preventDefault()
     setInput({
       ...input,
       diets: input.diets.filter((diet) => diet !== evt),
     });
   }
 
-  console.log(input);
+  //console.log(input);
+//console.log(type)
+return (
+  <div className={FormCss.contenedor}>
+    <div className={FormCss.divgral}>
+      <h2 className={FormCss.h2}>CREATE YOUR OWN FOOD </h2>
 
-  return (
-    <div className={FormCss.contenedor}>
-      <div className={FormCss.divgral}>
-        <h2 className={FormCss.h2}>CREATE YOUR OWN FOOD </h2>
-        <form className={FormCss.form} onSubmit={(evt) => handleSubmit(evt)}>
-          <div className={FormCss.input}>
-            <label>Recipe: </label>
-            <input
-              type="text"
-              autoComplete="off"
-              value={input.name}
-              name="name"
-              placeholder="Agregar Nombre..."
-              onChange={(evt) => handleChange(evt)}
-            />
-            {error.name && <p className="error">{error.name}</p>}
-          </div>
+      <form className={FormCss.form} onSubmit={(evt) => handleSubmit(evt)}>
+        <div className={FormCss.input}>
+          <label>Recipe: </label>
+          <input
+            type="text"
+            autoComplete="off"
+            value={input.name}
+            name="name"
+            placeholder="Add Name..."
+            onChange={(evt) => handleChange(evt)}
+          />
+          {error.name && <p className="error">{error.name}</p>}
+        </div>
 
-          <div className={FormCss.input}>
-            <label> Summary : </label>
-            <input
-              type="text"
-              value={input.summary}
-              name="summary"
-              placeholder="Escribe aqui el Summary..."
-              onChange={(evt) => handleChange(evt)}
-            />
-          </div>
+        <div className={FormCss.input}>
+          <label>Summary: </label>
+          <input
+            type="text"
+            value={input.summary}
+            name="summary"
+            placeholder="Write Summary here..."
+            onChange={(evt) => handleChange(evt)}
+          />
+        </div>
 
-          <div className={FormCss.input}>
-            <label> Score: </label>
-            <input
-              type="number"
-              value={input.score}
-              name="score"
-              onChange={(evt) => handleNumber(evt)}
-            />
-          </div>
+        <div className={FormCss.input}>
+          <label>Score: </label>
+          <input
+            type="number"
+            value={input.score}
+            name="score"
+            onChange={(evt) => handleNumber(evt)}
+          />
+        </div>
 
-          <div className={FormCss.input}>
-            <label> HealthScore: </label>
-            <input
-              type="number"
-              value={input.healthScore}
-              name="healthScore"
-              onChange={(evt) => handleNumber(evt)}
-            />
-          </div>
+        <div className={FormCss.input}>
+          <label>Health Score: </label>
+          <input
+            type="number"
+            value={input.healthScore}
+            name="healthScore"
+            onChange={(evt) => handleNumber(evt)}
+          />
+        </div>
 
-          <div className={FormCss.input}>
-            <label> Steps: </label>
-            <input
-              type="text"
-              value={input.steps}
-              name="steps"
-              placeholder="Escribe aqui los Steps..."
-              onChange={(evt) => handleChange(evt)}
-            />
-          </div>
+        <div className={FormCss.input}>
+          <label>Steps: </label>
+          <input
+            type="text"
+            value={input.steps}
+            name="steps"
+            placeholder="Write Steps here..."
+            onChange={(evt) => handleChange(evt)}
+          />
+        </div>
 
-          {
-            <button className={FormCss.buttonform} disabled={handleDisabled()}>
-              CREATE!
-            </button>
-          }
+        <button
+          type="submit"
+          className={FormCss.buttonform}
+          disabled={handleDisabled()}
+        >
+          CREATE!
+        </button>
+
+        <div className={FormCss.input}>
+          <label>Diets: </label>
+          <select
+            className={FormCss.input}
+            onChange={(evt) => handleSelect(evt)}
+          >
+            <option disabled>Diets</option>
+            {type?.map((type, id) => (
+              <option key={`${type.name}-${id}`} value={type.name}>
+                {type.name}
+              </option>
+            ))}
+          </select>
+
+          <div></div>
 
           <div>
-            <button
-              className={FormCss.buttondelete}
-              onClick={(e) => handleDelete(e)}
-            >
-              X
-            </button>
-            <select
-              className={FormCss.input}
-              onChange={(evt) => handleSelect(evt)}
-            >
-              <option disabled>Diets</option>
-              {type?.map((type,id) => (
-                <option key={`${type.name}-${id}`} value={type.name}>
-                  {type.name}
-                </option>
-              ))}
-            </select>
+            {input.diets?.map((diet, id) => (
+              <div key={id} className="div">
+                <p className={FormCss.input}>{diet}
+                  <button
+                    type="button" 
+                    className={FormCss.buttondelete}
+                    onClick={() => handleDelete(diet)}
+                  >
+                    X
+                  </button>
+                </p>
+              </div>
+            ))}
           </div>
-        </form>
-        <a href="/home">
-          <button
-            className={FormCss.buttonform}
-            onClick={() => dispatch(getRecipesAll())}
-          >
-            Return home
-          </button>
-        </a>
-      </div>
+        </div>
+      </form>
+      <a href="/home">
+        <button
+          className={FormCss.buttonform}
+          onClick={() => dispatch(getRecipesAll())}
+        >
+          Return home
+        </button>
+      </a>
     </div>
-  );
-}
+  </div>
+);
+            }

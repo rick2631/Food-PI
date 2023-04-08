@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 export const POST_RECIPES = 'POST_RECIPES'
 export const GET_RECIPES = 'GET_RECIPES'
 //export const GET_DATABASE = 'GET_DATABASE'
@@ -10,6 +10,7 @@ export const FILTER_BY_SEARCHBAR = 'FILTER_BY_SEARCHBAR'
 export const FILTER_BY_ORDER = 'FILTER_BY_ORDER'
 export const ORDER_BY_SCORE = 'ORDER_BY_SCORE'
 export const FILTER_BY_DIETS = 'FILTER_BY_DIETS'
+require('dotenv').config();
 
 
 export function getRecipesAll(){

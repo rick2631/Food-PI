@@ -12,8 +12,9 @@
 }
 .btna{
     /* justify-content: space-around; */
-    background-color: #c6c6c6;
-    border-color: #7A7A72;
+    background-color: #f8fba7;
+    border-color: 
+    #8ab162;
     color: #7A7A72;
     border-radius: 0.5rem;
     border-style: solid;
@@ -25,3 +26,6 @@
     margin: 0.3rem;
     
 }
+.btna:hover {
+    transform: scale(1.50);
+} 

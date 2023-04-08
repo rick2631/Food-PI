@@ -11,7 +11,7 @@
 .form{
     display: flex;
     flex-direction: column;
-    background:  #acc95f;
+    background:url('../imagen/landing.jpg');
     border: 5c5c5c, solid, 5px;
     max-width: 100%;
     align-items: center;

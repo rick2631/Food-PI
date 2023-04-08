@@ -6,7 +6,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Filter from "../../components/Filter/Filter";
 import { getRecipesAll, getTypes } from "../../redux/actions";
 import  Food from '../../components/Food/Food';
-
+import HomeCss from '../Home/Home.module.css'
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -39,15 +39,20 @@ export default function Home() {
 
   return (
     <div>
+
+          
       <div>
         <Filter
           typesAll={typesAll}
           setOrder={setOrder}
           setCurrentPage={setCurrentPage}
         />
+        <a href = '/create'> 
+<center><button className={HomeCss.button} > CREAR </button></center>
+        </a>
       </div>
       <div>
-        <SearchBar/>
+      <center><SearchBar/></center>
       </div>
       <div>
         <Food currentRecipes={currentRecipes} />
