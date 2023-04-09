@@ -29,6 +29,38 @@ import { useHistory } from "react-router-dom";
     <h5 className={CardCss.diets} > {diets?.map((diet,id) => <span key={`${id}-dieta`}> {diet}, </span> )}</h5>
     <h5 className={CardCss.types}>  {types?.map((dish,id)=> <span key ={`${id}-plato`}> {dish.name ? dish.name : dish}, </span>)}</h5>
     <h3 className={CardCss.healthScore}>Health Score: {healthScore}</h3>
+    <center>
+  <div class="healths-progress">
+    {healthScore >= 20 ? (
+      <span className={CardCss.star}>&#9733;</span>
+    ) : (
+      <span className={CardCss.star}>&#9734;</span>
+    )}
+    {healthScore >= 40 ? (
+      <span className={CardCss.star}>&#9733;</span>
+    ) : (
+      <span className={CardCss.star}>&#9734;</span>
+    )}
+    {healthScore >= 60 ? (
+      <span className={CardCss.star}>&#9733;</span>
+    ) : (
+      <span className={CardCss.star}>&#9734;</span>
+    )}
+    {healthScore >= 80 ? (
+      <span className={CardCss.star}>&#9733;</span>
+    ) : (
+      <span className={CardCss.star}>&#9734;</span>
+    )}
+    {healthScore >= 100 ? (
+      <span className={CardCss.star}>&#9733;</span>
+    ) : (
+      <span className={CardCss.star}>&#9734;</span>
+    )}
+  </div>
+</center>
+       
+
+
     </div>
     </div>
    )

@@ -33,22 +33,50 @@ export default function Detail (){
                     <h3 className={DetailsCss.subTitle}>Summary</h3>
                     <p className={DetailsCss.summary}>{detailfood.summary && detailfood.summary.replace(/<[^>]+>/g, "")}</p>
                     <div className={DetailsCss.healths}>
-                        <span id="healthScore" className={DetailsCss.subTitle}>
+                     <span id="healthScore" className={DetailsCss.subTitle}>
                             Health Level:{" "}
-                            
-                            <progress
-                                id="healthScore"
-                                max="100"
-                                value={detailfood.healthScore}
 
-                            />{" "}
                             <span className={DetailsCss.numbers}>
 
                                 {detailfood.healthScore}/100
                             </span>
                         </span>
                     </div>
-                
+                            
+                    <center>
+  <div class="healths-progress">
+    {detailfood.healthScore >= 20 ? (
+      <span className={DetailsCss.star}>&#9733;</span>
+    ) : (
+      <span className={DetailsCss.star}>&#9734;</span>
+    )}
+    {detailfood.healthScore>= 40 ? (
+      <span className={DetailsCss.star}>&#9733;</span>
+    ) : (
+      <span className={DetailsCss.star}>&#9734;</span>
+    )}
+    {detailfood.healthScore>= 60 ? (
+      <span className={DetailsCss.star}>&#9733;</span>
+    ) : (
+      <span className={DetailsCss.star}>&#9734;</span>
+    )}
+    {detailfood.healthScore >= 80 ? (
+      <span className={DetailsCss.star}>&#9733;</span>
+    ) : (
+      <span className={DetailsCss.star}>&#9734;</span>
+    )}
+    {detailfood.healthScore >= 100 ? (
+      <span className={DetailsCss.star}>&#9733;</span>
+    ) : (
+      <span className={DetailsCss.star}>&#9734;</span>
+    )}
+  </div>
+</center>
+
+
+
+
+
 
 
                             </div>

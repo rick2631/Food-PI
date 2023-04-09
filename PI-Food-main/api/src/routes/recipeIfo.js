@@ -1,10 +1,9 @@
-const express = require ('express');
-const axios = require ('axios');
-const router = express.Router();
-const {Recipe,Diet} = require('../db.js');
+const express = require('express')
+const router = express.Router()
+const axios = require('axios');
 require('dotenv').config();
+const {Recipe,Diet} = require('../db.js');
 const {API_KEY,spoonacularURL} = process.env;
-
 
 const getApiInfo = async () => {
     try
@@ -174,14 +173,15 @@ if (name) {
 // Constantes de la API
 
 
-// Función para obtener los detalles de la receta de la API
+// Función para obtener los detalles de la receta de la const axios = require('axios');
+
+// Función para obtener los detalles de la receta desde la API
 const getRecipeByIdFromApi = async (id) => {
   try {
     const response = await axios.get(`${spoonacularURL}/recipes/${id}/information?apiKey=${API_KEY}`);
     if (response.status === 200) {
       const data = response.data;
-      //console.log({response,data})
-      const info ={
+      const info = {
         name: data.title,
         vegetarian: data.vegetarian,
         vegan: data.vegan,
@@ -191,17 +191,17 @@ const getRecipeByIdFromApi = async (id) => {
         idApi: data.id,
         score: data.spoonacularScore,
         healthScore: data.healthScore,
-        diets: data.diets?.map(element => element),types: data.dishTypes?.map(element => element),
-        summary:data.summary,
+        diets: data.diets?.map(element => element),
+        types: data.dishTypes?.map(element => element),
+        summary: data.summary,
         steps: data.instructions
-       }
+      };
       return info;
     } else {
-      return 'Error al obtener detalles de la receta';
+      throw new Error('Error al obtener detalles de la receta');
     }
   } catch (error) {
-    console.error(error);
-
+    throw new Error('Error al obtener detalles de la receta');
   }
 };
 
@@ -220,8 +220,7 @@ const getRecipeByIdFromDb = async (id) => {
       ],
     });
   } catch (error) {
-    console.error(error);
-
+    throw new Error('Error al obtener detalles de la receta desde la base de datos');
   }
 };
 
@@ -240,19 +239,16 @@ const getRecipeById = async (id) => {
 router.get('/:id', async (req, res, next) => {
   const id = req.params.id;
 
-  try{
+  try {
     const data = await getRecipeById(id);
     if (data) {
       res.json(data);
     } else {
       res.status(404).send('No se encontró la receta');
     }
-  }catch (err) {
+  } catch (err) {
     next(err);
   }
 });
 
 module.exports = router;
-
-
-

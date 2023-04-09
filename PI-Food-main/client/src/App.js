@@ -13,7 +13,7 @@ function App() {
           <Route exact={true} path="/create">
             <Form />
           </Route>
-          <Route exact={true} path="/home/:id">
+          <Route path="/home/:id">
             <Detail />
           </Route>
           <Route exact={true} path="/">

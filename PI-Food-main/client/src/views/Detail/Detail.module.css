@@ -56,9 +56,9 @@
     background-position:center;
     
 }
-
+/* 
 .subTitle{
-    text-align: center;}
+    text-align: center;} */
    
  .button{
         justify-content: space-around;
@@ -75,36 +75,34 @@
         margin: 1rem;
     
     }
-   
+    .subTitle {
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 0px;
+        text-align: center;
+    }
   
-    
-    .progress {
-        /* Estilos para la barra de progreso */
-        height: 20px;
-        background-color: #eee;
-        border-radius: 5px;
-        overflow: hidden;
-    }
-    
-    .progress-bar {
-        /* Estilos para la barra de progreso en sí */
-        height: 100%;
-        width: 100%;
-        background-color: #1e87f0;
-        position: relative;
-        transition: width 0.5s ease;
-    }
-    
-    .stars {
-        /* Estilos para las estrellas de progreso */
-        display: block;
-        height: 100%;
-        color: #f9c74f;
-        font-size: 16px;
-        line-height: 20px;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    
-
-    
+    .healths-progress {
+        margin-left: 20px;
+        margin-top: 8px;
+      }
+      
+      .star {
+        font-size: 24px; /* Tamaño de la estrella */
+        color: #ffcc00; /* Color de la estrella */
+      }
+      
+      .filled::before {
+        content: "\2605"; /* Estrella rellena en UTF-8 */
+      }
+      
+      .half-filled::before {
+        content: "\2605\00BD"; /* Media estrella en UTF-8 */
+      }
+      
+      .empty::before {
+        content: "\2606"; /* Estrella vacía en UTF-8 */
+      }
+      
