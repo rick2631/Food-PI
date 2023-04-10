@@ -1,12 +1,12 @@
 .container {
   
-    background-size: 50%;
+    background-size: 100%;
     background-position: right;
-    background-position-y: bottom; 
     text-align: center;
     background-repeat: no-repeat;
-    position: relative;
-    background:url('../imagen/landi.jpg');
+   
+
+
     
      
 }
@@ -33,6 +33,24 @@
     font-size: 1.5rem;
     justify-content: space-around; 
 }
+
+.imagen {
+  position: fixed; /* Posición fija para que la imagen se ajuste a la ventana del navegador */
+  top:100; /* Alineación superior de la imagen */
+  right: 0; /* Alineación derecha de la imagen */
+  bottom: 0; /* Alineación inferior de la imagen */
+  left: 0; /* Alineación izquierda de la imagen */
+  overflow: hidden; /* Oculta cualquier desbordamiento de la imagen */
+  z-index: 9999; /* Valor de z-index opcional para asegurarse de que la imagen esté en la parte superior de otros elementos */
+}
+
+.imagen img {
+  width: 100%; /* Ancho de la imagen para que ocupe todo el contenedor */
+  height: 100%; /* Altura de la imagen para que ocupe todo el contenedor */
+  object-fit: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
+}
+
+
 
 /* 
   .imag {

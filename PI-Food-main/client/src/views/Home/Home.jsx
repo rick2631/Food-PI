@@ -39,6 +39,8 @@ export default function Home() {
 
   return (
     <div>
+<div class={HomeCss.micomponente}>
+  
 
           
       <div>
@@ -64,6 +66,7 @@ export default function Home() {
                       paginado = {paginado}
                     /> 
       </div>
+    </div>
     </div>
   );
 }
