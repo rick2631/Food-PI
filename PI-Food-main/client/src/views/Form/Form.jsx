@@ -9,11 +9,16 @@ import FormCss from "../Form/Form.module.css";
 function validate(input) {
   let errors = {};
   if (!input.name) {
-    errors.name = "Name is require";
+    errors.name = "Name is required";
+  } else if (input.name.length > 50) {
+    errors.name = "Name cannot exceed 50 characters";
   }
+
   if (!input.summary) {
     errors.summary = "Summary is require";
+  
   }
+
   return errors;
 }
 
@@ -99,7 +104,7 @@ export default function Form() {
   function handleNumber(evt) {
     try {
       const parsValue = parseInt(evt.target.value);
-      if (Number.isInteger(parsValue) && parsValue >= 0 && parsValue <= 99) {
+      if (Number.isInteger(parsValue) && parsValue >= 0 && parsValue <= 100) {
         setInput({
           ...input,
           [evt.target.name]: parsValue,
