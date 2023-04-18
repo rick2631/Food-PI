@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
-import { filterByOrder, getFilterByDiets, orderByScore } from "../../redux/actions";
+import { filterByOrder, filterCreated, getFilterByDiets, orderByScore } from "../../redux/actions";
 import s from '../Filter/Filter.module.css'
 
 export default function Filter({typesAll,setCurrentPage, setOrder}) {
@@ -26,7 +26,10 @@ export default function Filter({typesAll,setCurrentPage, setOrder}) {
         setCurrentPage(1)
         setOrder(`${evt.target.value}`)
     }
-
+    function handleFilterCreated(evt){
+        dispatch(filterCreated(evt.target.value));  
+        
+        }
 
 
     return (
@@ -52,7 +55,13 @@ export default function Filter({typesAll,setCurrentPage, setOrder}) {
                             <option value="high"> High score </option>
                              <option value="low"> Low score </option>
                         </select>
-                   
+                        <select name="ifoapidb" className={s.select} onChange = {evt => handleFilterCreated(evt)}>
+                           
+                           <option value = 'all'>All </option>
+                           <option value = 'existent'>Api</option>
+                           <option value = 'created'>Created </option> 
+                               </select>
+   
        </div>
   </div>      
     )

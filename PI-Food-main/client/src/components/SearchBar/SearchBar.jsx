@@ -9,16 +9,19 @@ export default function SearchBar(){
     const dispatch = useDispatch();
     const [name, setName] = useState('');
 
-    function onChange(e){
-        e.preventDefault()
-        setName(e.target.value); 
-        console.log(name)
+    function handleInput(evt){
+        evt.preventDefault();
+        setName(evt.target.value);
+        dispatch(searchBarName(evt.target.value))
+        
     }
+ 
     
     function handleSubmit(e){
         
         e.preventDefault();
         dispatch(getRecipesName(name))
+        setName('')  
     }
 
     return(
@@ -29,7 +32,7 @@ export default function SearchBar(){
             name="name"
             autoComplete="on"
             placeholder="Enter..."
-            onChange={onChange}
+            onChange={evt => handleInput(evt)}
             className={SearchBarCss.select}
             value={name}
             />

@@ -4,3 +4,15 @@
     flex-wrap: wrap;
 
 }
+.error {
+    text-align: center;
+    align-items: center;
+}
+
+.error img {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+}

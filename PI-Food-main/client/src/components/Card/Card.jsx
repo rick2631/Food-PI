@@ -12,7 +12,7 @@ export function Card({ id, name, image, diets, types, healthScore }) {
   async function handleCardClick(id) {
     try {
       dispatch(searchId(id));
-      history.push("/home/id");
+      history.push(`/home/${id}`);
     } catch (error) {
       console.error("No hay detalle para esta receta:", error);
     }
@@ -23,25 +23,25 @@ export function Card({ id, name, image, diets, types, healthScore }) {
         <img
           className={CardCss.img}
           src={image}
-          alt="image"
+          alt=" "
           onClick={() => handleCardClick(id)}
         />
         <h2 className={CardCss.title}>{name}</h2>
         <h5 className={CardCss.diets}>
           {" "}
-          {diets?.map((diet, id) => (
-            <span key={`${id}-dieta`}> {diet}, </span>
+          {diets?.map((diet,index) => (
+            <span key={`${index}-dieta`}> {diet}, </span>
           ))}
         </h5>
         <h5 className={CardCss.types}>
           {" "}
-          {types?.map((dish, id) => (
-            <span key={`${id}-plato`}> {dish.name ? dish.name : dish}, </span>
+          {types?.map((dish,index) => (
+            <span key={`${index}-plato`}> {dish.name ? dish.name : dish}, </span>
           ))}
         </h5>
         <h3 className={CardCss.healthScore}>Health Score: {healthScore}</h3>
         <center>
-          <div class="healths-progress">
+          <div className="healths-progress">
             {healthScore >= 20 ? (
               <span className={CardCss.star}>&#9733;</span>
             ) : (

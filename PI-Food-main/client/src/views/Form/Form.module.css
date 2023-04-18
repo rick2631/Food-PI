@@ -32,6 +32,21 @@
     text-decoration: none;
     margin: 1rem;
 }
+.buttonform1{
+    justify-content: space-around;
+    background-color: #f8f871;
+    border-color: #acc95f;
+    color: #7A7A72;
+    border-radius: 0.5rem;
+    border-style: solid;
+    cursor: pointer;
+    padding: 0.7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 1rem;
+    position:absolute;
+}
 .buttonform:disabled{
     text-decoration: line-through;
     background-color: #984545;
@@ -52,7 +67,7 @@
     background-color: #FAFAED;
     color:#7A7A72;
     border-style: solid;
-    border-color: #7A7A72;
+    border-color:#acc95f;
     border-radius: 0.5rem;
     margin: 0.5rem;
     padding: 1rem;
@@ -62,6 +77,7 @@
 .input option{
     background-color: #FAFAED;
     color:#7A7A72;
+    border-color:#acc95f;
     font-family: Arial, Helvetica, sans-serif  
 }
 .buttondelete{

@@ -28,18 +28,18 @@ console.log(currentRecipes)
           currentRecipes?.map((r,id) => {
             return (
               <Card
-                    name = {r.name}
+                    name={r.name}
                     image={r.image}
                     key={`${r.id}-${id}`}
                     diets={r.diets}
                     healthScore={r.healthScore}
-                    types = {r.types}
+                    types={r.types}
                     id={r.idApi ? r.idApi : r.id}
                 />
               );
             })
             ) : (
-              <centro><Error /></centro>
+            <Error className={r.error} />
               )} 
 </div>
 );

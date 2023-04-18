@@ -242,7 +242,7 @@ router.get('/:id', async (req, res, next) => {
   try {
     const data = await getRecipeById(id);
     if (data) {
-      res.json(data);
+      res.status(200).json(data);
     } else {
       res.status(404).send('No se encontró la receta');
     }

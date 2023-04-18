@@ -12,10 +12,10 @@ export default function Detail() {
   useEffect(() => {
     dispatch(searchId(id));
   }, [id, dispatch]);
-
+//console.log(id)
   const { detail: detailfood } = useSelector((state) => state);
 
-  //console.log(detailfood)
+//console.log(detailfood)
 
   return (
     <div className={DetailsCss.contenedor}>
@@ -43,10 +43,14 @@ export default function Detail() {
                 </span>
               ))}
             </h2>
-            <h2 className={DetailsCss.diets}>
-              {" "}
-              {detailfood.diets?.map((diet, index) => (
-                <span key={`${index}-dieta`}> {diet}, </span>
+            <h2 className={DetailsCss.diets}> {" "} {detailfood.diets?.map((diet,index) => (
+                 <span key={`${index}-plato`}>
+                 
+                 {diet.name
+                   ? diet.name.charAt(0).toUpperCase() + diet.name.slice(1)
+                   : diet}
+                 ,{" "}
+               </span>
               ))}
             </h2>
             <h3 className={DetailsCss.subTit}>Summary</h3>
@@ -66,7 +70,7 @@ export default function Detail() {
             </center>
 
             <center>
-              <div class="healths-progress">
+              <div className="healths-progress">
                 {detailfood.healthScore >= 20 ? (
                   <span className={DetailsCss.star}>&#9733;</span>
                 ) : (

@@ -6,8 +6,9 @@ import {
     POST_RECIPES,
     FILTER_BY_DIETS,
     FILTER_BY_ORDER,
-    FILTER_BY_SEARCHBAR,
+   FILTER_BY_SEARCHBAR,
     ORDER_BY_SCORE,
+    FILTER_CREATED
 } from "./actions";
 
 const inicialState = {
@@ -40,15 +41,46 @@ function rootReducer(state = inicialState, action) {
       
       return {
         ...state,
-        detail: action.payload
+        detail:action.payload,
     }
                             
-      case GET_RECIPES_NAME:
-   
-      return {
-        ...state,
-        recipes: action.payload
-      };
+    case GET_RECIPES_NAME:
+      const addRecipe = state.recipesAll
+        return {
+                  ...state,
+                  recipes: action.payload,
+                  recipesAll: addRecipe
+              } 
+
+
+case FILTER_BY_SEARCHBAR:
+          const filtSearch = state.recipesAll
+          const filtOnState = filtSearch.filter((recipe) => {
+          let name = recipe.name.toLowerCase();
+          if (name.includes(action.payload)) return recipe;
+        
+          })
+           //console.log(filtOnState)       
+           return{
+               ...state,
+               recipes: filtOnState   
+              }
+              case FILTER_CREATED:
+  const allCreated = state.recipesAll;
+  const createdFilter =
+    action.payload === 'created'
+      ? allCreated.filter((e) =>typeof e.id==='string')
+      : action.payload === 'existent'
+      ? allCreated.filter((e) => typeof e.idApi==='number')
+      : action.payload === 'all'
+      ? allCreated
+      : [];
+  return {
+    ...state,
+    recipes: createdFilter,
+  };
+
+
       case ORDER_BY_SCORE:
 
       const recypesByScore = action.payload === 'SSc' ? state.recipesAll.sort((a, b) => {
@@ -63,6 +95,7 @@ function rootReducer(state = inicialState, action) {
                       return{
                           ...state,
                           recipes: recypesByScore
+                          
                       } 
 
     case FILTER_BY_ORDER:

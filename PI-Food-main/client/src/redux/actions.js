@@ -10,7 +10,8 @@ export const FILTER_BY_SEARCHBAR = 'FILTER_BY_SEARCHBAR'
 export const FILTER_BY_ORDER = 'FILTER_BY_ORDER'
 export const ORDER_BY_SCORE = 'ORDER_BY_SCORE'
 export const FILTER_BY_DIETS = 'FILTER_BY_DIETS'
-require('dotenv').config();
+export const FILTER_CREATED = 'FILTER_CREATED'
+//require('dotenv').config();
 
 
 export function getRecipesAll(){
@@ -63,20 +64,17 @@ export function postRecipes(payload){
     }
 }
 
-export function searchId(id) {
-    return async function (dispatch) {
-     try  {
-        const recipe = await axios.get(`http://localhost:3001/recipe/${id}`)
-            return dispatch({
-        type: GET_STATE_ID,
-        payload: recipe.data
-            })
-        } catch (error) {
-            console.log(error);
-        }
-    
+export const searchId = (id) => async (dispatch) => {
+    try {
+        const recipe = await axios.get(`http://localhost:3001/recipe/${id}`);
+        dispatch({
+            type: GET_STATE_ID,
+            payload: recipe.data
+        });
+    } catch (error) {
+        console.log(error);
     }
-}
+};
 export function searchBarName(payload) {
     return {
         type: FILTER_BY_SEARCHBAR,
@@ -99,7 +97,12 @@ export function getRecipesName(name) {
         }
     }
 }
-
+export function filterCreated(payload){
+    return {
+        type: FILTER_CREATED,
+        payload:payload
+    }
+}
 
 export function getFilterByDiets(payload){
     return {

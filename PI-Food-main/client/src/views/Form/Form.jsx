@@ -52,9 +52,14 @@ export default function Form() {
   
   function handleSubmit(evt) {
     evt.preventDefault();
+    try {
     dispatch(postRecipes(input));
     history.push('/home')
-    alert('Felicidades recipe creado!')
+    alert('{Felicidades recipe creado!')
+    }catch(error){
+    
+    alert(error.message);
+  } 
   }
 
   function handleSelect(evt) {
@@ -220,7 +225,7 @@ return (
       </form>
       <a href="/home">
         <button
-          className={FormCss.buttonform}
+          className={FormCss.buttonform1}
           onClick={() => dispatch(getRecipesAll())}
         >
           Return home

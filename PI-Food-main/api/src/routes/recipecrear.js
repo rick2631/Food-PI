@@ -1,4 +1,4 @@
-const express = require('express') // importa Express
+const express = require('express') 
 const router = express.Router() // crea una instancia de router de Express
 require('dotenv').config(); // importa y configura dotenv
 const {Recipe,Diet} = require ('../db.js'); // importa los modelos Recipe y Diet desde el archivo app.js
